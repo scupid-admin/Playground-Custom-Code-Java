@@ -1,0 +1,43 @@
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+
+jar {
+    baseName = 'deployable'
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("com.amazonaws:aws-lambda-java-core:1.1.0")
+// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+// https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1'
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.14'
+    // https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.19'
+
+
+    //<=custom_dependencies=>
+
+}
