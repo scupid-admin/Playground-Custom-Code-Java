@@ -24,6 +24,12 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    into('lib') {
+        from configurations.compile
+    }
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
