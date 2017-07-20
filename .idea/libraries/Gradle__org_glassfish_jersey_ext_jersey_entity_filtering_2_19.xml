@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.glassfish.jersey.ext:jersey-entity-filtering:2.19">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.ext/jersey-entity-filtering/2.19/9a2d9527f0cbde3b7935978bbd51d8cebf0a2f32/jersey-entity-filtering-2.19.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.ext/jersey-entity-filtering/2.19/e4f75090237d59f1c7cdc0c67ad36662d1d7517f/jersey-entity-filtering-2.19-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
