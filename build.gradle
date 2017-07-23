@@ -22,8 +22,10 @@ sourceSets {
 
 repositories {
     mavenCentral()
+    maven {
+        url "http://104.155.191.79:8081/nexus/content/repositories/thirdparty"
+    }
 }
-
 jar {
     into('lib') {
         from configurations.compile
@@ -34,6 +36,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile 'com.altin:custom-code:1.0.0'
     compile("com.amazonaws:aws-lambda-java-core:1.1.0")
 // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
@@ -42,7 +45,6 @@ dependencies {
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.14'
     // https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson
     compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.19'
-
 
     //<=custom_dependencies=>
 
