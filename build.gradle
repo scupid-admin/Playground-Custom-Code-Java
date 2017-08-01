@@ -45,7 +45,7 @@ dependencies {
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.14'
     // https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson
     compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.19'
-
+    compile 'org.glassfish.jersey.core:jersey-client:2.23.1'
     //<=custom_dependencies=>
 
 }
