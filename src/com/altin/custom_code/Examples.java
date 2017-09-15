@@ -110,7 +110,42 @@ public class Examples implements RequestHandler<Map<String, Object>, CustomCodeR
         TextMessagePayload textMessagePayload = createTextMessage();
         messages.add(textMessagePayload);
 
+        CarousalMessagePayload carousalMessagePayload = createCarousalMessage();
+
         return publishMessageAction;
+    }
+
+    /**
+     * This creates a carousal message
+     *
+     * @return The {@link CarousalMessagePayload} representing a carousal message
+     */
+    private CarousalMessagePayload createCarousalMessage() {
+        //Making a new Payload
+        CarousalMessagePayload carousalMessagePayload = new CarousalMessagePayload();
+
+        //List of carousal elements. Each element is a card.
+        List<Element> elements = new ArrayList<Element>();
+
+        //Making one card
+        Element element = new Element();
+        element.setImageUrl("www.imageUrl.com");
+        element.setTitle("Title");
+        element.setSubtitle("Subtitle");
+
+        //Adding a button
+        ArrayList<Button> buttons = new ArrayList<>();
+        Button button = new Button();
+        button.setTitle("Button");
+        button.setButtonType(Button.ButtonType.URL);
+        buttons.add(button);
+        element.setButtons(buttons);
+        button.setUrl("http://morph.ai");
+
+        elements.add(element);
+
+        carousalMessagePayload.setCarousalElements(elements);
+        return carousalMessagePayload;
     }
 
     /**
