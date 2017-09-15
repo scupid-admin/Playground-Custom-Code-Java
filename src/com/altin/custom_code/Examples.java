@@ -48,8 +48,10 @@ public class Examples implements RequestHandler<Map<String, Object>, CustomCodeR
          * Sending response to users
          */
         PublishMessageAction publishMessageAction = createPublishMessageAction();
+        actions.add(publishMessageAction);
 
-        return null;
+        customCodeResponse.setActions(actions);
+        return customCodeResponse;
     }
 
 
@@ -111,8 +113,25 @@ public class Examples implements RequestHandler<Map<String, Object>, CustomCodeR
         messages.add(textMessagePayload);
 
         CarousalMessagePayload carousalMessagePayload = createCarousalMessage();
+        messages.add(carousalMessagePayload);
+
+        MediaMessagePayload mediaMessage = createMediaMessage();
+        messages.add(mediaMessage);
 
         return publishMessageAction;
+    }
+
+    /**
+     * This creates a media message
+     *
+     * @return The {@link MediaMessagePayload} which can be an image or video etc
+     */
+    private MediaMessagePayload createMediaMessage() {
+        MediaMessagePayload mediaMessagePayload = new MediaMessagePayload();
+        //can be image or video
+        mediaMessagePayload.setMediaType("image");
+        mediaMessagePayload.setMediaUrl("http://morph.ai/logo.png");
+        return mediaMessagePayload;
     }
 
     /**
