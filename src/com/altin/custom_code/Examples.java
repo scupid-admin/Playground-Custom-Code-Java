@@ -9,7 +9,10 @@ import morph.base.actions.VariableScope;
 import morph.base.actions.impl.PublishMessageAction;
 import morph.base.actions.impl.SetVariableAction;
 import morph.base.beans.CustomCodeResponse;
+import morph.base.beans.simplifiedmessage.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -86,10 +89,53 @@ public class Examples implements RequestHandler<Map<String, Object>, CustomCodeR
 
     /**
      * This creates a {@link PublishMessageAction} which is used to reply back to the users
+     * PublishMessageAction contains {@link SimplifiedMessage}
+     * {@link SimplifiedMessage} is a collection of {@link SimplifiedMessagePayload}
+     * {@link SimplifiedMessagePayload} represents a single message
+     * <p>
+     * Thus PublishMessageAction lets you publish multiple messages
      *
      * @return The {@link PublishMessageAction} to reply back to the users
      */
     private PublishMessageAction createPublishMessageAction() {
-        return null;
+        PublishMessageAction publishMessageAction = new PublishMessageAction();
+
+        SimplifiedMessage simplifiedMessage = new SimplifiedMessage();
+        publishMessageAction.setSimplifiedMessage(simplifiedMessage);
+
+
+        ArrayList<SimplifiedMessagePayload> messages = Lists.newArrayList();
+        simplifiedMessage.setMessages(messages);
+
+        TextMessagePayload textMessagePayload = createTextMessage();
+        messages.add(textMessagePayload);
+
+        return publishMessageAction;
+    }
+
+    /**
+     * This creates a Text message. Note that text message can also contain buttons & suggestions (QRs)
+     *
+     * @return The {@link TextMessagePayload} representing a text message
+     */
+    private TextMessagePayload createTextMessage() {
+        TextMessagePayload payload = new TextMessagePayload();
+        payload.setText(
+                "Thank you for booking the appointment. Please click on the button below to pay appointment fees.");
+        Button button = new Button();
+        button.setTitle("Pay");
+        button.setButtonType(Button.ButtonType.URL);
+        button.setUrl("http://www.morph.ai");
+        button.setWebviewHeightRatio(Button.WebviewHeightRatio.TALL);
+        payload.setButtons(Collections.singletonList(button));
+
+        ArrayList<SuggestionElement> suggestionElements = Lists.newArrayList();
+        SuggestionElement suggestion = new SuggestionElement();
+        suggestion.setImageUrl("http://image-url.com");
+        suggestion.setTitle("Back");
+        suggestion.setPayload("back");
+        suggestionElements.add(suggestion);
+        payload.setSuggestionElements(suggestionElements);
+        return payload;
     }
 }
