@@ -23,7 +23,7 @@ sourceSets {
 repositories {
     mavenCentral()
     maven {
-        url "http://104.155.191.79:8081/nexus/content/repositories/thirdparty"
+        url "http://nxs.morph.ai:8081/repository/maven-releases/"
     }
 }
 jar {
@@ -36,7 +36,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile 'com.altin:custom-code:1.0.4'
+    compile 'com.altin:custom-code:1.0.5'
     compile("com.amazonaws:aws-lambda-java-core:1.1.0")
 // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
